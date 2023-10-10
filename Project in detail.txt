@@ -1,0 +1,76 @@
+CUSTOMER BEHAVIOUR ANALYSIS USING MS SQL SERVER
+In this project, I analyze Danny's Diner's customers behavior using Microsoft SQL Server.
+Danny is a passionate lover of Japanese food. He took a leap of faith and opened his doors to sushi, curry and ramen enthusiasts in early 2021.
+But like any aspiring entrepreneur, Danny soon realized that running a restaurant involves more than just serving mouthwatering dishes. It requires a deep understanding of customers, their preferences and their patterns of behavior. This realization led him to embark on a new venture – harnessing the power of data to elevate his customer’s dining experience.
+Danny is eager to leverage the data collected during the first few months of operation to unravel key insights about his customers. He yearns to uncover their visiting patterns, discover how much they spend and identify their favourite menu items. Armed with this knowledge, Danny believes he can deliver a personalized experience that will keep his loyal customers coming back for more.
+
+Additionally, Danny wishes to utilize these insights to make informed decisions about expanding his existing customer loyalty program. 
+To aid in this case study, Danny has graciously provided me with three vital datasets:
+
+Sales – this dataset holds valuable information about the transactions that take place at Danny’s Diner, including the customer ID, menu items ordered and the order date.
+Menu – It encompasses all the delightful culinary creations offered at the restaurant including curry, ramen and sushi. It contains details such as item names, and their prices.
+Members – This dataset holds information about when customers joined the beta version of Danny’s loyalty program.
+For this section, I will write SQL queries that will allow me to create a database and tables to hold the information Danny has shared.
+
+CREATE DATABASE dannys_diner;
+
+USE dannys_diner;
+SQL
+Sales Table
+
+CREATE TABLE sales(
+	customer_id VARCHAR(1),
+	order_date DATE,
+	product_id INTEGER
+);
+
+INSERT INTO sales
+	(customer_id, order_date, product_id)
+VALUES
+	('A', '2021-01-01', 1),
+	('A', '2021-01-01', 2),
+	('A', '2021-01-07', 2),
+	('A', '2021-01-10', 3),
+	('A', '2021-01-11', 3),
+	('A', '2021-01-11', 3),
+	('B', '2021-01-01', 2),
+	('B', '2021-01-02', 2),
+	('B', '2021-01-04', 1),
+	('B', '2021-01-11', 1),
+	('B', '2021-01-16', 3),
+	('B', '2021-02-01', 3),
+	('C', '2021-01-01', 3),
+	('C', '2021-01-01', 3),
+	('C', '2021-01-07', 3);
+SQL
+Menu Table
+
+CREATE TABLE menu(
+	product_id INTEGER,
+	product_name VARCHAR(5),
+	price INTEGER
+);
+
+INSERT INTO menu
+	(product_id, product_name, price)
+VALUES
+	(1, 'sushi', 10),
+    (2, 'curry', 15),
+    (3, 'ramen', 12);
+SQL
+Members Table
+
+CREATE TABLE members(
+	customer_id VARCHAR(1),
+	join_date DATE
+);
+
+-- Still works without specifying the column names explicitly
+INSERT INTO members
+	(customer_id, join_date)
+VALUES
+	('A', '2021-01-07'),
+    ('B', '2021-01-09');
+
+
+
